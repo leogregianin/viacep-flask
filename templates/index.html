@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>ViaCEP em Python</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>ViaCEP</h1>
+            </div>
+            <div id="content">
+                <form method="post" action="{{ url_for('busca_cep') }}">
+                  <label for="cep">CEP: </label>
+                  <input type="text" name="cep" class="textarea" value="78118390" /><br />
+                  <input type="submit" />
+                </form>
+            </div>
+
+            <div class="site-footer">
+              <p class="footer">Source code <a href="http://github.com/leogregianin/viacep-python-flask">here</a></p>
+            </div>
+    </body>
+</html>
+ 

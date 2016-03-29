@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>ViaCEP em Python</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>ViaCEP</h1>
+            </div>
+            <div id="content">
+                  <label>CEP: {{cep}}</label><br />
+                  <label>Rua: {{rua}}</label><br />
+                  <label>Bairro: {{bairro}}</label><br />
+                  <label>Cidade: {{cidade}} </label><br />
+                  <label>Estado: {{uf}}</label><br />
+                  <label>IBGE: {{ibge}} </label><br />
+                </form>
+            </div>
+
+            <div class="site-footer">
+              <p class="footer">Source code <a href="http://github.com/leogregianin/viacep-python-flask">here</a></p>
+            </div>
+    </body>
+</html>
+ 
