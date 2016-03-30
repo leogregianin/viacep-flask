@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request, url_for
 import json
 import requests
-import os
+import viacep
 
 app = Flask(__name__)
 
@@ -15,15 +15,13 @@ def index():
 @app.route('/', methods=['POST'])
 def busca_cep():
     d_cep = request.form['cep']
-    url_api = ('http://www.viacep.com.br/ws/%s/json' % d_cep)
-    req = requests.get(url_api)
-    print(req.text)
-    dados_json = json.loads(req.text)
+    d = viacep.ViaCEP(d_cep)
+    dados_json = d.retorna_json_completo()
 
     cep      = dados_json['cep']
-    rua      = dados_json['logradouro']
-    bairro   = dados_json['bairro']
-    cidade   = dados_json['localidade']
+    rua      = (u'%s' % dados_json['logradouro'])
+    bairro   = (u'%s' % dados_json['bairro'])
+    cidade   = (u'%s' % dados_json['localidade'])
     uf       = dados_json['uf']
     ibge     = dados_json['ibge']
     return render_template('busca_cep.html', cep=cep,rua=rua,bairro=bairro,cidade=cidade,uf=uf,ibge=ibge)
