@@ -16,7 +16,7 @@ def index():
 def busca_cep():
     d_cep = request.form['cep']
     d = viacep.ViaCEP(d_cep)
-    dados_json = d.retorna_json_completo()
+    dados_json = d.getDadosCEP()
 
     cep      = dados_json['cep']
     rua      = (u'%s' % dados_json['logradouro'])
