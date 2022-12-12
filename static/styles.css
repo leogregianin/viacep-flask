@@ -120,4 +120,9 @@ form input[type=submit]{
     border: 0;
     cursor: pointer;
     text-align: center;
+    margin-top: 10px;
 } 
+
+#erro {
+    color: #E13300;
+}
