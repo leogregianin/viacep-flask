@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request, url_for
 import json
 import requests
-import viacep
+
 
 app = Flask(__name__)
 
@@ -15,8 +15,17 @@ def index():
 @app.route('/', methods=['POST'])
 def busca_cep():
     d_cep = request.form['cep']
-    d = viacep.ViaCEP(d_cep)
-    dados_json = d.getDadosCEP()
+    if len(d_cep) != 8:
+        msg = "Digite um valor numérico de 8 dígitos"
+        return render_template('index.html', msg=msg)
+
+
+    d = requests.get('https://viacep.com.br/ws/{}/json/'.format(d_cep))
+    dados_json = d.json()
+
+    if dados_json.get('erro'):
+        return render_template('erro.html')
+
 
     cep      = dados_json['cep']
     rua      = (u'%s' % dados_json['logradouro'])

@@ -9,16 +9,18 @@
                 <h1>ViaCEP</h1>
             </div>
             <div id="content">
+                <label id="erro">{{msg}}</label><br />
                 <form method="post" action="{{ url_for('busca_cep') }}">
                   <label for="cep">CEP: </label>
-                  <input type="text" name="cep" class="textarea" value="" /><br />
-                  <input type="submit" />
+                  <input type="number" id="cep" name="cep" class="textarea" value="" required="required" maxlength="8" minlength="8" placeholder="Apenas números"/><br />
+                  <input type="submit"/>
                 </form>
             </div>
 
             <div class="site-footer">
               <p class="footer">Source code <a href="http://github.com/leogregianin/viacep-flask">here</a></p>
             </div>
+            
     </body>
 </html>
  
